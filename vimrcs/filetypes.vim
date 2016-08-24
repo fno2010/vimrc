@@ -55,6 +55,15 @@ au FileType coffee call CoffeeScriptFold()
 
 au FileType gitcommit call setpos('.', [0, 1, 1, 0])
 
+""""""""""""""""""""""""""""""
+" => YANG section
+"""""""""""""""""""""""""""""""
+au BufNewFile,BufRead *.yang set ft=yang
+
+""""""""""""""""""""""""""""""
+" => XML section
+"""""""""""""""""""""""""""""""
+au FileType xml setl sw=2 sts=2 et
 
 """"""""""""""""""""""""""""""
 " => Shell section

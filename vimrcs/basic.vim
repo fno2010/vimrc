@@ -44,9 +44,10 @@
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember
-set history=500
+set history=700
 
 " Enable filetype plugins
+filetype on
 filetype plugin on
 filetype indent on
 
@@ -57,6 +58,7 @@ set autoread
 " like <leader>w saves the current file
 let mapleader = ","
 let g:mapleader = ","
+set timeoutlen=2000
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -102,6 +104,11 @@ set hid
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
+" In many terminal emulators the mouse works just fine, thus enable it.
+if has('mouse')
+  set mouse=a
+endif
+
 " Ignore case when searching
 set ignorecase
 
@@ -133,6 +140,11 @@ set tm=500
 
 " Add a bit extra margin to the left
 set foldcolumn=1
+
+" Set line number
+set number
+" Show command
+set showcmd
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -207,6 +219,10 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Treat long lines as break lines (useful when moving around in them)
+map j gj
+map k gk
+
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
 map <space> /
 map <c-space> ?
@@ -225,9 +241,12 @@ map <leader>bd :Bclose<cr>:tabclose<cr>gT
 
 " Close all the buffers
 map <leader>ba :bufdo bd<cr>
-
-map <leader>l :bnext<cr>
-map <leader>h :bprevious<cr>
+" Next buffer
+map <leader>bn :bnext<cr>
+" Previous buffer
+map <leader>bp :bprevious<cr>
+" List buffers
+map <leader>bl :buffers<cr>
 
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
@@ -415,8 +434,3 @@ function! <SID>BufcloseCloseIt()
      execute("bdelete! ".l:currentBufNum)
    endif
 endfunction
-
-" Make VIM remember position in file after reopen
-" if has("autocmd")
-"   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-"endif
