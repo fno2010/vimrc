@@ -25,6 +25,7 @@ au FileType python map <buffer> <leader>D ?def
 au FileType javascript call JavaScriptFold()
 au FileType javascript setl fen
 au FileType javascript setl nocindent
+au FileType javascript setl sw=2 sts=2 et
 
 au FileType javascript imap <c-t> $log();<esc>hi
 au FileType javascript imap <c-a> alert();<esc>hi
@@ -56,6 +57,11 @@ au FileType coffee call CoffeeScriptFold()
 au FileType gitcommit call setpos('.', [0, 1, 1, 0])
 
 """"""""""""""""""""""""""""""
+" => TypeScript section
+"""""""""""""""""""""""""""""""
+au BufNewFile,BufRead *.ts set ft=typescript
+
+""""""""""""""""""""""""""""""
 " => YANG section
 """""""""""""""""""""""""""""""
 au BufNewFile,BufRead *.yang set ft=yang
@@ -64,10 +70,11 @@ au BufNewFile,BufRead *.yang set ft=yang
 " => XML section
 """""""""""""""""""""""""""""""
 au FileType xml setl sw=2 sts=2 et
+au FileType html setl sw=2 sts=2 et
 
 """"""""""""""""""""""""""""""
 " => Shell section
 """"""""""""""""""""""""""""""
-if exists('$TMUX') 
-    set term=screen-256color 
+if exists('$TMUX')
+    set term=screen-256color
 endif

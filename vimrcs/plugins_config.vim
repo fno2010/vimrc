@@ -30,7 +30,10 @@ call vundle#begin(path)
         Plugin 'scrooloose/nerdtree'
 
         " vim-airline
-        Plugin 'bling/vim-airline'
+        " Plugin 'bling/vim-airline'
+
+        " lightline (replace to vim-airline)
+        Plugin 'itchyny/lightline.vim'
 
         " surround.vim
         Plugin 'tpope/vim-surround'
@@ -70,6 +73,9 @@ call vundle#begin(path)
 
         " Indent Guides
         Plugin 'nathanaelkane/vim-indent-guides'
+
+        " vimproc
+        Plugin 'Shougo/vimproc.vim', {'do' : 'make'}
 
     " }
 
@@ -161,6 +167,17 @@ call vundle#begin(path)
 
         " Racer support for Vim
         Plugin 'racer-rust/vim-racer'
+    " }
+
+    " Web {
+        " Js beautify
+        Plugin 'maksimr/vim-jsbeautify'
+
+        " Typescript Highlight
+        Plugin 'leafgarland/typescript-vim'
+
+        " Tsuquyomi
+        Plugin 'Quramy/tsuquyomi'
     " }
 
     " Pandoc {
@@ -269,9 +286,72 @@ endif
 " => vim-airline config (force color)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " enable powerline-fonts
-let g:airline_powerline_fonts=1
+"let g:airline_powerline_fonts=1
 " set theme
 "let g:airline_theme="luna"
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => lightline config (since vim-airline is complicated)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:lightline={
+    \ 'mode_map': {'c': 'NORMAL'},
+    \ 'active': {
+    \   'left': [ ['mode', 'paste'], ['fugitive', 'filename'] ]
+    \ },
+    \ 'component_function': {
+    \   'modified': 'LightLineModified',
+    \   'readonly': 'LightLineReadonly',
+    \   'fugitive': 'LightLineFugitive',
+    \   'filename': 'LightLineFilename',
+    \   'fileformat': 'LightLineFileformat',
+    \   'filetype': 'LightLineFiletype',
+    \   'fileencoding': 'LightLineFileencoding',
+    \   'mode': 'LightLineMode'
+    \ },
+    \ 'separator': {'left': "\ue0b0", 'right': "\ue0b2"},
+    \ 'subseparator': {'left': "\ue0b1", 'right': "\ue0b3"}}
+
+function! LightLineModified()
+    return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! LightLineReadonly()
+    return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '\ue0a2' : ''
+endfunction
+
+function! LightLineFilename()
+    return ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
+                \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+                \ &ft == 'unite' ? unite#get_status_string() :
+                \ &ft == 'vimshell' ? vimshell#get_status_string() :
+                \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+                \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+endfunction
+
+function! LightLineFugitive()
+    if &ft !~? 'vimfiler\|gundo' && exists("*fugitive#head")
+        let branch = fugitive#head()
+        return branch !=# '' ? "\ue0a0" . branch : ''
+    endif
+    return ''
+endfunction
+
+function! LightLineFileformat()
+    return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! LightLineFiletype()
+    return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+endfunction
+
+function! LightLineFileencoding()
+    return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &fenc) : ''
+endfunction
+
+function! LightLineMode()
+    return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -454,6 +534,7 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+autocmd FileType typescript setlocal completeopt+=menu,preview
 
 " Enable heavy omni completion.
 if !exists('g:neocomplcache_omni_patterns')
