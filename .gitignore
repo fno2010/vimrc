@@ -5,3 +5,7 @@ tags
 bundle
 init.vim
 .DS_Store
+eclim
+plugin
+syntax
+.netrwhist
