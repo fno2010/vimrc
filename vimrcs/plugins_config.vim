@@ -224,6 +224,7 @@ call vundle#end()            " required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>pl :PluginList<cr>
 map <leader>pi :PluginInstall<cr>
+map <leader>pu :PluginUpdate<cr>
 map <leader>ps :PluginSearch 
 map <leader>pc :PluginClean<cr>
 map <leader>pe :e ~/.vim/vimrcs/plugins_config.vim<cr>
