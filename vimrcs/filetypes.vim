@@ -75,6 +75,6 @@ au FileType html setl sw=2 sts=2 et
 """"""""""""""""""""""""""""""
 " => Shell section
 """"""""""""""""""""""""""""""
-if exists('$TMUX')
+if exists('$TMUX') && &term != "nvim"
     set term=screen-256color
 endif
