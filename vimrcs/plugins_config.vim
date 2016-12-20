@@ -318,7 +318,7 @@ function! LightLineModified()
 endfunction
 
 function! LightLineReadonly()
-    return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '\ue0a2' : ''
+    return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? "\ue0a2" : ''
 endfunction
 
 function! LightLineFilename()
