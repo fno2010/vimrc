@@ -97,6 +97,12 @@ call vundle#begin(path)
 
         " VOom
         Plugin 'VOom'
+
+        " Goyo
+        Plugin 'junegunn/goyo.vim'
+
+        " vim-zenroom2
+        Plugin 'amix/vim-zenroom2'
     " }
 
     " General Programming {
@@ -261,6 +267,12 @@ augroup textobj_quote
     autocmd FileType textile call textobj#quote#init()
     autocmd FileType text call textobj#quote#init({'educate': 0})
 augroup END
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Goyo
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <silent> <leader>z :Goyo<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
