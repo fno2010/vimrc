@@ -394,8 +394,7 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if isdirectory(expand("~/.vim/bundle/ctrlp.vim/"))
 let g:ctrlp_working_path_mode = 'ra'
-nnoremap <silent> <D-t> :CtrlP<CR>
-nnoremap <silent> <D-r> :CtrlPMRU<CR>
+map <C-b> :CtrlPBuffer<cr>
 let g:ctrlp_custom_ignore = {
     \ 'dir':  '\.git$\|\.hg$\|\.svn$',
     \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
