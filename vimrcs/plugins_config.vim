@@ -5,11 +5,17 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Load vundle paths
-""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set rtp+=~/.vim/bundle/Vundle.vim
 let path='~/.vim/bundle'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Close filetype detection immediately before vundle#begin
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+filetype off
+
 call vundle#begin(path)
 
 " Vundle {
@@ -197,6 +203,11 @@ call vundle#begin(path)
         Plugin 'vim-pandoc/vim-pandoc-after'
     " }
 
+    " Other Syntax {
+        " vimperator.vim
+        Plugin 'vimperator/vimperator.vim'
+    " }
+
     " Misc {
         Plugin 'tpope/vim-markdown'
         Plugin 'spf13/vim-preview'
@@ -224,6 +235,12 @@ call vundle#end()            " required
 
 
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Enable filetype detection immediately after vundle#end
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+filetype plugin indent on
+syntax on
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Map for vundle

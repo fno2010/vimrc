@@ -73,6 +73,11 @@ au FileType xml setl sw=2 sts=2 et
 au FileType html setl sw=2 sts=2 et
 
 """"""""""""""""""""""""""""""
+" => Vim section
+""""""""""""""""""""""""""""""
+au FileType vim map <buffer> <leader>s :so %<cr>
+
+""""""""""""""""""""""""""""""
 " => Shell section
 """"""""""""""""""""""""""""""
 if exists('$TMUX') && &term != "nvim"
