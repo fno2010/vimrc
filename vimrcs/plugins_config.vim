@@ -83,6 +83,12 @@ call vundle#begin(path)
         " vimproc
         Plugin 'Shougo/vimproc.vim', {'do' : 'make'}
 
+        " Better whitespace highlight
+        Plugin 'ntpeters/vim-better-whitespace'
+
+        " ACK
+        Plugin 'mileszs/ack.vim'
+
     " }
 
     " Writing {
@@ -181,7 +187,23 @@ call vundle#begin(path)
         Plugin 'racer-rust/vim-racer'
     " }
 
+    " Go {
+        " vim-go
+        Plugin 'fatih/vim-go'
+    " }
+
+    " Scala {
+        " vim-scala
+        Plugin 'derekwyatt/vim-scala'
+
+        " ensime
+        Plugin 'ensime/ensime-vim'
+    " }
+
     " Web {
+        " vim-javascript
+        Plugin 'pangloss/vim-javascript'
+
         " Js beautify
         Plugin 'maksimr/vim-jsbeautify'
 
@@ -190,6 +212,12 @@ call vundle#begin(path)
 
         " Tsuquyomi
         Plugin 'Quramy/tsuquyomi'
+
+        " VueJS
+        Plugin 'posva/vim-vue'
+
+        " Stylus
+        Plugin 'wavded/vim-stylus'
     " }
 
     " Pandoc {
@@ -206,6 +234,17 @@ call vundle#begin(path)
     " Other Syntax {
         " vimperator.vim
         Plugin 'vimperator/vimperator.vim'
+
+        " RFC Syntax
+        Plugin 'rfc-syntax'
+
+        " RAML
+        Plugin 'in3d/vim-raml'
+    " }
+
+    " Misc {
+        " VimGameCodeBreak
+        Plugin 'johngrib/vim-game-code-break'
     " }
 
     " Misc {
@@ -215,6 +254,7 @@ call vundle#begin(path)
         Plugin 'cespare/vim-toml'
         Plugin 'quentindecock/vim-cucumber-align-pipes'
         Plugin 'saltstack/salt-vim'
+        Plugin 'floobits/floobits-neovim'
     " }
 
 " }
@@ -626,3 +666,30 @@ endif
 " => Matchit.zip
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let b:match_ignorecase = 1
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Javascript
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:javascript_plugin_jsdoc = 1
+
+let g:javascript_conceal_function             = "ƒ"
+let g:javascript_conceal_null                 = "ø"
+let g:javascript_conceal_this                 = "@"
+let g:javascript_conceal_return               = "⇚"
+let g:javascript_conceal_undefined            = "¿"
+let g:javascript_conceal_NaN                  = "ℕ"
+let g:javascript_conceal_prototype            = "¶"
+let g:javascript_conceal_static               = "•"
+let g:javascript_conceal_super                = "Ω"
+let g:javascript_conceal_arrow_function       = "⇒"
+
+set conceallevel=1
+map <leader>jl :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => ACK
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+cnoreabbrev Ack Ack!
+nnoremap <Leader>a :Ack!<Space>

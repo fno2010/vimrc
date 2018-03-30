@@ -71,6 +71,12 @@ au BufNewFile,BufRead *.yang set ft=yang
 """""""""""""""""""""""""""""""
 au FileType xml setl sw=2 sts=2 et
 au FileType html setl sw=2 sts=2 et
+au FileType vue setl sw=2 sts=2 et
+
+""""""""""""""""""""""""""""""
+" => YAML section
+"""""""""""""""""""""""""""""""
+au FileType yaml setl sw=2 sts=2 et
 
 """"""""""""""""""""""""""""""
 " => Vim section
