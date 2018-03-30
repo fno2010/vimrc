@@ -1,6 +1,10 @@
-# The Ultimate vimrc
+# Written in the front
 
-Over the last 8 years I have used and tweaked Vim. This is my Ultimate vimrc.
+This is my customized vimrc. The sketch and soul are forked from [amix's Ultimate vimrc](https://github.com/amix/vimc) with some ideas borrowed from [spf13-vim](https://github.com/spf13/spf13-vim).
+
+Current documentation is still highly duplicated from [amix's Ultimate vimrc](https://github.com/amix/vimc).
+
+# The Ultimate vimrc
 
 There are two versions:
 
@@ -312,3 +316,9 @@ Do following:
 * Remove `~/.vim`
 * Remove any lines that refernce `.vim` in your `~/.vimrc`
 
+## Acknowlegements
+
+I cannot appreciate the following projects more, because this vimrc would never be done without their help.
+
+- [amix's Ultimate vimrc](https://github.com/amix/vimc)
+- [spf13-vim](https://github.com/spf13/spf13-vim)
